@@ -17,4 +17,4 @@ const PreviewCollection = ({ title, items, history, match, routeName }) => (
   </div>
 );
 
-export default PreviewCollection;
+export default withRouter(PreviewCollection);
