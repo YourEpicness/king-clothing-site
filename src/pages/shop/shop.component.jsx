@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 // import {createStructuredSelector} from 'reselect';
 //redux thunk imports
 import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
-import {selectIsCollectionFetching, selectIsCollectionsLoaded} from '../../redux/shop/shop.selectors';
+// import {selectIsCollectionFetching, selectIsCollectionsLoaded} from '../../redux/shop/shop.selectors';
 
 import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container.jsx';
 import CollectionPageContainer from '../collection/collection.container';
 
 // import {firestore, convertCollectionsSnapshotToMap} from '../../firebase/firebase.utils';
 
-import {updateCollections} from '../../redux/shop/shop.actions';
+// import {updateCollections} from '../../redux/shop/shop.actions';
 
 // import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
@@ -20,17 +20,12 @@ import {updateCollections} from '../../redux/shop/shop.actions';
 // const CollectionsPageWithSpinner = WithSpinner(CollectionPage);
 
 // creating a class component since we are storing data and states
-class ShopPage extends React.Component {
-  state = {
-    loading: true
-  };
-
-  unsubscribeFromSnapshot = null;
-
-  componentDidMount() {
+const ShopPage = ({fetchCollectionsStart, match}) => {
+  useEffect(() => {
+      fetchCollectionsStart();
+  }, [fetchCollectionsStart]);
     // async fetching using redux
-    const {fetchCollectionsStart} = this.props;
-    fetchCollectionsStart();
+
 
     // old code without redux
     // const {updateCollections} = this.props;
@@ -53,10 +48,6 @@ class ShopPage extends React.Component {
     //   updateCollections(collectionsMap);
     //   this.setState({loading: false});
     // })
-  };
-
-  render() {
-    const {match}  = this.props;
 
     return(
       <div className='shop-page'>
@@ -72,7 +63,6 @@ class ShopPage extends React.Component {
       </div>
     );
   }
-};
 
 // const mapStateToProps = createStructuredSelector({
 //   isFetchingCollections: selectIsCollectionFetching,
