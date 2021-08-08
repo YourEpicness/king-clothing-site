@@ -20,4 +20,4 @@ This site was built using React, SASS, Styled Components, and Redux. I learned a
 My group project using React: https://github.com/YourEpicness/item-swapping-site
 
 Warning: Live site is deployed on heroku, so load times will be longer
-[Live site](tninja-king-clothing.herokuapp.com)
+Live site: https://tninja-king-clothing.herokuapp.com/
